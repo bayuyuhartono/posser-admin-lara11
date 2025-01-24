@@ -16,7 +16,7 @@ use Modules\UserManagement\Http\Controllers\MenuController;
 |
 */
 
-// Route::middleware(['auth','has-permission'])->group(function () {
+Route::middleware(['auth','user-access'])->group(function () {
     Route::prefix('usermanagement')->group(function () {
         Route::get('account', [AccountController::class, 'listAccount']);
         Route::get('account/add', [AccountController::class, 'addAccount']);
@@ -30,4 +30,4 @@ use Modules\UserManagement\Http\Controllers\MenuController;
         Route::get('menu/add', [MenuController::class, 'addMenu']);
         Route::post('menu/add', [MenuController::class, 'addMenuStore']);
     });
-// });
+});
