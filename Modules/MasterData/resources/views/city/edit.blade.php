@@ -61,3 +61,19 @@
 </div>
  
 @endsection
+
+@push('extra-styles')
+  <link rel="stylesheet" href="{{asset('ui/plugins/select2/css/select2.min.css')}}">
+  <link rel="stylesheet" href="{{asset('ui/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css')}}">
+@endpush
+
+@push('extra-scripts')
+  <script src="{{asset('ui/plugins/select2/js/select2.full.min.js')}}"></script>    
+  <script type="text/javascript">
+    $(function () {
+      $('.select2bs4').select2({
+        theme: 'bootstrap4'
+      })
+    });
+    </script>
+@endpush
