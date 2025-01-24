@@ -1,2 +1,14 @@
+
+## Posser
+
+make a module
+
+```
 php artisan module:make <modulename>
-php artisan module:delete <modulename># posser-admin-lara11
+```
+
+remove a module
+
+```
+php artisan module:delete <modulename>
+```
