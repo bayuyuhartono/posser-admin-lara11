@@ -1,5 +1,6 @@
 {
     "Dashboard": true,
     "UserManagement": true,
-    "MasterData": true
+    "MasterData": true,
+    "Products": true
 }
