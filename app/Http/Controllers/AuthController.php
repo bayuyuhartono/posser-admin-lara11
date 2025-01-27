@@ -36,7 +36,7 @@ class AuthController extends Controller
                         ->withSuccess('You have Successfully loggedin');
         };
 
-        return back()->withErrors(['messages' => 'Email atau Password Anda salah']);
+        return back()->withErrors(['messages' => 'Email or Password is not correct']);
     }
 
     public function registration()

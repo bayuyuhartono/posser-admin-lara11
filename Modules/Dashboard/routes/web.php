@@ -14,7 +14,7 @@ use Modules\Dashboard\Http\Controllers\DashboardController;
 |
 */
 
-Route::middleware(['auth','user-access'])->group(function () {
+Route::middleware(['auth'])->group(function () {
     Route::resource('dashboard', DashboardController::class)->names('dashboard');
 });
 
