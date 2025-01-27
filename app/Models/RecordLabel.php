@@ -21,6 +21,15 @@ class RecordLabel extends Model
         return $query;
     }
 
+    public function scopeGetRecordLabelGenre($query, $rclbuuid)
+    {
+        $query = DB::table("record_label_genre")
+            ->where("record_label", $rclbuuid)
+            ->get();
+
+        return $query;
+    }
+
     public function scopeSaveRecordLabelGenre($query, $data)
     {
         $query = DB::table("record_label_genre")->insert($data);

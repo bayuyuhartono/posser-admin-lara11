@@ -32,30 +32,72 @@
   <div class="card-header">
     <h3 class="card-title">Form {{ $title }}</h3>
   </div>
-  <form action="{{ url()->current() }}" method="post">
+  <form action="{{ url()->current() }}" method="post" enctype="multipart/form-data">
     @csrf
     <div class="card-body row">
       <div class="col-sm-12">
+        <div class="col-sm-4">
+          <img src="{{ asset($current->display_pict) }}" alt="Display Picture" class="img-fluid">
+        </div>
+        <br>
         <div class="form-group">
-          <label>Country</label>
-          <select class="form-control select2bs4" name="country" style="width: 100%;" required>
-            <option value="" @selected(old('country') == "")>Choose country</option>
-            @foreach ($country as $item)
-                <option value="{{ $item->uuid }}" @selected($current->country_uuid == $item->uuid)>
+          <label for="display_pict">Display Picture</label>
+          <div class="custom-file">
+            <input type="hidden" class="form-control" id="display_pict_curr" name="exist_display_pict" value="{{ $current->display_pict }}">
+            <input type="file" class="custom-file-input" id="display_pict" name="display_pict">
+            <label class="custom-file-label" for="display_pict">Choose file</label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="recordlabel_name">Record Label Name</label>
+          <input type="text" class="form-control" id="recordlabel_name" name="recordlabel_name" placeholder="Record Label Name" value="{{ $current->name }}" required>
+        </div>
+        <div class="form-group">
+          <label for="description">Description</label>
+          <input type="text" class="form-control" id="description" name="description" placeholder="Description" value="{{ $current->description }}" required>
+        </div>
+        <div class="form-group">
+          <label>Genre</label>
+          <select class="select2bs4" multiple="multiple" data-placeholder="Pick genre" name="genre[]" style="width: 100%;">
+            @foreach ($genre as $item)
+                <option value="{{ $item->uuid }}" @selected(in_array($item->uuid, $rclbSelected))>
                     {{ $item->name }}
                 </option>
             @endForeach
           </select>
         </div>
         <div class="form-group">
-          <label for="city_name">City Name</label>
-          <input type="text" class="form-control" id="city_name" name="city_name" placeholder="City Name" value="{{ $current->name }}" required>
+          <label>City</label>
+          <select class="form-control select2bs4" name="city" style="width: 100%;" required>
+            <option value="" @selected($current->city == "")>Choose city</option>
+            @foreach ($city as $item)
+                <option value="{{ $item->uuid }}" @selected($current->city == $item->uuid)>
+                    {{ $item->name }}
+                </option>
+            @endForeach
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="address">Address</label>
+          <input type="text" class="form-control" id="address" name="address" placeholder="Address" value="{{ $current->address }}" required>
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone</label>
+          <input type="text" class="form-control" id="phone" name="phone" placeholder="Phone" value="{{ $current->phone }}" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="text" class="form-control" id="email" name="email" placeholder="Email" value="{{ $current->email }}" required>
+        </div>
+        <div class="form-group">
+          <label for="web_link">Website Link</label>
+          <input type="text" class="form-control" id="web_link" name="web_link" placeholder="Website Link" value="{{ $current->web_link }}" required>
         </div>
       </div>
     </div>
     <div class="card-footer">
       <button type="submit" class="btn btn-primary">Submit</button>
-      <a href="{{ url('masterdata/city') }}" onclick="return confirm('Anda yakin mau kembali?')" class="btn btn-success">Kembali</a>
+      <a href="{{ url('products/recordlabel') }}" onclick="return confirm('Anda yakin mau kembali?')" class="btn btn-success">Kembali</a>
     </div>
   </form>
 </div>
@@ -68,9 +110,13 @@
 @endpush
 
 @push('extra-scripts')
+  <script src="{{asset('ui/plugins/bs-custom-file-input/bs-custom-file-input.min.js')}}"></script>
   <script src="{{asset('ui/plugins/select2/js/select2.full.min.js')}}"></script>    
   <script type="text/javascript">
     $(function () {
+      $(function () {
+        bsCustomFileInput.init();
+      });
       $('.select2bs4').select2({
         theme: 'bootstrap4'
       })
