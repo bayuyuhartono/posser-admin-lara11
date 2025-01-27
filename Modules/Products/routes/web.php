@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use Modules\Products\Http\Controllers\ProductsController;
 use Modules\Products\Http\Controllers\RecordLabelController;
+use Modules\Products\Http\Controllers\StudioMusicController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,5 +25,12 @@ Route::middleware(['auth','user-access'])->group(function () {
         Route::get('recordlabel/edit/{uuid}', [RecordLabelController::class, 'editProductsRecordLabel']);
         Route::post('recordlabel/edit/{uuid}', [RecordLabelController::class, 'updateProductsRecordLabel']);
         Route::get('recordlabel/delete/{uuid}', [RecordLabelController::class, 'destroyProductsRecordLabel']);
+
+        Route::get('studiomusic', [StudioMusicController::class, 'listsProductsStudioMusic']);
+        Route::get('studiomusic/add', [StudioMusicController::class, 'addProductsStudioMusic']);
+        Route::post('studiomusic/add', [StudioMusicController::class, 'storeProductsStudioMusic']);
+        Route::get('studiomusic/edit/{uuid}', [StudioMusicController::class, 'editProductsStudioMusic']);
+        Route::post('studiomusic/edit/{uuid}', [StudioMusicController::class, 'updateProductsStudioMusic']);
+        Route::get('studiomusic/delete/{uuid}', [StudioMusicController::class, 'destroyProductsStudioMusic']);
     });
 });

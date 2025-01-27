@@ -44,22 +44,12 @@
           </div>
         </div>
         <div class="form-group">
-          <label for="recordlabel_name">Record Label Name</label>
-          <input type="text" class="form-control" id="recordlabel_name" name="recordlabel_name" placeholder="Record Label Name" value="{{ old('recordlabel_name') }}" required>
+          <label for="studiomusic_name">Studio Music Name</label>
+          <input type="text" class="form-control" id="studiomusic_name" name="studiomusic_name" placeholder="Studio Music Name" value="{{ old('studiomusic_name') }}" required>
         </div>
         <div class="form-group">
           <label for="description">Description</label>
           <input type="text" class="form-control" id="description" name="description" placeholder="Description" value="{{ old('description') }}" required>
-        </div>
-        <div class="form-group">
-          <label>Genre</label>
-          <select class="select2bs4" multiple="multiple" data-placeholder="Pick genre" name="genre[]" style="width: 100%;">
-            @foreach ($genre as $item)
-                <option value="{{ $item->uuid }}" @selected(old('genre') == $item->uuid)>
-                    {{ $item->name }}
-                </option>
-            @endForeach
-          </select>
         </div>
         <div class="form-group">
           <label>City</label>
@@ -92,7 +82,7 @@
     </div>
     <div class="card-footer">
       <button type="submit" class="btn btn-primary">Submit</button>
-      <a href="{{ url('products/recordlabel') }}" onclick="return confirm('Anda yakin mau kembali?')" class="btn btn-success">Kembali</a>
+      <a href="{{ url('products/studiomusic') }}" onclick="return confirm('Anda yakin mau kembali?')" class="btn btn-success">Kembali</a>
     </div>
   </form>
 </div>

@@ -114,9 +114,8 @@
   <script src="{{asset('ui/plugins/select2/js/select2.full.min.js')}}"></script>    
   <script type="text/javascript">
     $(function () {
-      $(function () {
-        bsCustomFileInput.init();
-      });
+      bsCustomFileInput.init();
+      
       $('.select2bs4').select2({
         theme: 'bootstrap4'
       })

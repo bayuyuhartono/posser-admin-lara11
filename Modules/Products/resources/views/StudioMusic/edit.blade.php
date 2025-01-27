@@ -36,37 +36,32 @@
     @csrf
     <div class="card-body row">
       <div class="col-sm-12">
+        <div class="col-sm-4">
+          <img src="{{ asset($current->display_pict) }}" alt="Display Picture" class="img-fluid">
+        </div>
+        <br>
         <div class="form-group">
           <label for="display_pict">Display Picture</label>
           <div class="custom-file">
+            <input type="hidden" class="form-control" id="display_pict_curr" name="exist_display_pict" value="{{ $current->display_pict }}">
             <input type="file" class="custom-file-input" id="display_pict" name="display_pict">
             <label class="custom-file-label" for="display_pict">Choose file</label>
           </div>
         </div>
         <div class="form-group">
-          <label for="recordlabel_name">Record Label Name</label>
-          <input type="text" class="form-control" id="recordlabel_name" name="recordlabel_name" placeholder="Record Label Name" value="{{ old('recordlabel_name') }}" required>
+          <label for="studiomusic_name">Studio Music Name</label>
+          <input type="text" class="form-control" id="studiomusic_name" name="studiomusic_name" placeholder="Studio Music Name" value="{{ $current->name }}" required>
         </div>
         <div class="form-group">
           <label for="description">Description</label>
-          <input type="text" class="form-control" id="description" name="description" placeholder="Description" value="{{ old('description') }}" required>
-        </div>
-        <div class="form-group">
-          <label>Genre</label>
-          <select class="select2bs4" multiple="multiple" data-placeholder="Pick genre" name="genre[]" style="width: 100%;">
-            @foreach ($genre as $item)
-                <option value="{{ $item->uuid }}" @selected(old('genre') == $item->uuid)>
-                    {{ $item->name }}
-                </option>
-            @endForeach
-          </select>
+          <input type="text" class="form-control" id="description" name="description" placeholder="Description" value="{{ $current->description }}" required>
         </div>
         <div class="form-group">
           <label>City</label>
           <select class="form-control select2bs4" name="city" style="width: 100%;" required>
-            <option value="" @selected(old('city') == "")>Choose city</option>
+            <option value="" @selected($current->city == "")>Choose city</option>
             @foreach ($city as $item)
-                <option value="{{ $item->uuid }}" @selected(old('city') == $item->uuid)>
+                <option value="{{ $item->uuid }}" @selected($current->city == $item->uuid)>
                     {{ $item->name }}
                 </option>
             @endForeach
@@ -74,25 +69,25 @@
         </div>
         <div class="form-group">
           <label for="address">Address</label>
-          <input type="text" class="form-control" id="address" name="address" placeholder="Address" value="{{ old('address') }}" required>
+          <input type="text" class="form-control" id="address" name="address" placeholder="Address" value="{{ $current->address }}" required>
         </div>
         <div class="form-group">
           <label for="phone">Phone</label>
-          <input type="text" class="form-control" id="phone" name="phone" placeholder="Phone" value="{{ old('phone') }}" required>
+          <input type="text" class="form-control" id="phone" name="phone" placeholder="Phone" value="{{ $current->phone }}" required>
         </div>
         <div class="form-group">
           <label for="email">Email</label>
-          <input type="text" class="form-control" id="email" name="email" placeholder="Email" value="{{ old('email') }}" required>
+          <input type="text" class="form-control" id="email" name="email" placeholder="Email" value="{{ $current->email }}" required>
         </div>
         <div class="form-group">
           <label for="web_link">Website Link</label>
-          <input type="text" class="form-control" id="web_link" name="web_link" placeholder="Website Link" value="{{ old('web_link') }}" required>
+          <input type="text" class="form-control" id="web_link" name="web_link" placeholder="Website Link" value="{{ $current->web_link }}" required>
         </div>
       </div>
     </div>
     <div class="card-footer">
       <button type="submit" class="btn btn-primary">Submit</button>
-      <a href="{{ url('products/recordlabel') }}" onclick="return confirm('Anda yakin mau kembali?')" class="btn btn-success">Kembali</a>
+      <a href="{{ url('products/studiomusic') }}" onclick="return confirm('Anda yakin mau kembali?')" class="btn btn-success">Kembali</a>
     </div>
   </form>
 </div>
@@ -110,7 +105,7 @@
   <script type="text/javascript">
     $(function () {
       bsCustomFileInput.init();
-
+      
       $('.select2bs4').select2({
         theme: 'bootstrap4'
       })
