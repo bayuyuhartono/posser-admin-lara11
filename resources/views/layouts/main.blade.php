@@ -52,7 +52,7 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link text-center">
+    <a href="/" class="brand-link text-center">
         <img src="{{asset('ui/images/ironmaidenwide.png')}}" alt="Wide Logo" width="80%">
         <span class="brand-text font-weight-light"></span>
     </a>
