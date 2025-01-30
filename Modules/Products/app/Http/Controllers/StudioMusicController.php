@@ -20,7 +20,7 @@ class StudioMusicController extends Controller
         $data['title'] = 'Studio Music';
         $data['lists'] = StudioMusic::getStudioMusicLists();
 
-        return view('products::studiomusic.lists', $data);
+        return view('products::studio_music.lists', $data);
     }
 
     public function addProductsStudioMusic()
@@ -28,7 +28,7 @@ class StudioMusicController extends Controller
         $data['title'] = 'Add Studio Music';
         $data['city'] = City::getCityLists();
 
-        return view('products::studiomusic.add', $data);
+        return view('products::studio_music.add', $data);
     }
 
     public function storeProductsStudioMusic(Request $request)
@@ -78,7 +78,7 @@ class StudioMusicController extends Controller
         $data['current'] = StudioMusic::where('uuid',$uuid)->first();
         $data['city'] = City::getCityLists();
 
-        return view('products::studiomusic.edit', $data);
+        return view('products::studio_music.edit', $data);
     }
 
     public function updateProductsStudioMusic(Request $request, $uuid)

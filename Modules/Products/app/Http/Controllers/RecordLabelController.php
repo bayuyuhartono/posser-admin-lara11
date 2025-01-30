@@ -20,7 +20,7 @@ class RecordLabelController extends Controller
         $data['title'] = 'Record Label';
         $data['lists'] = RecordLabel::getRecordLabelLists();
 
-        return view('products::recordlabel.lists', $data);
+        return view('products::record_label.lists', $data);
     }
 
     public function addProductsRecordLabel()
@@ -29,7 +29,7 @@ class RecordLabelController extends Controller
         $data['genre'] = Genre::getGenreLists();
         $data['city'] = City::getCityLists();
 
-        return view('products::recordlabel.add', $data);
+        return view('products::record_label.add', $data);
     }
 
     public function storeProductsRecordLabel(Request $request)
@@ -97,7 +97,7 @@ class RecordLabelController extends Controller
         }
         $data['rclbSelected'] = $rclbSelected;
 
-        return view('products::recordlabel.edit', $data);
+        return view('products::record_label.edit', $data);
     }
 
     public function updateProductsRecordLabel(Request $request, $uuid)
