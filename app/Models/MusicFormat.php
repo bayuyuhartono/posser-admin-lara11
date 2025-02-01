@@ -15,9 +15,9 @@ class MusicFormat extends Model
 
     public function scopeGetMusicFormatLists($query)
     {
-        $query = DB::table("master_musicformat as genre")
-            ->select('genre.uuid', 'genre.name')
-            ->orderBy('genre.name','ASC')
+        $query = DB::table("master_musicformat as musicformat")
+            ->select('musicformat.uuid', 'musicformat.name')
+            ->orderBy('musicformat.name','ASC')
             ->get();
 
         return $query;

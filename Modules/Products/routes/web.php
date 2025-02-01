@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use Modules\Products\Http\Controllers\ProductsController;
 use Modules\Products\Http\Controllers\RecordLabelController;
+use Modules\Products\Http\Controllers\RecordStoreController;
 use Modules\Products\Http\Controllers\StudioMusicController;
 use Modules\Products\Http\Controllers\StudioRecordingController;
 
@@ -26,6 +27,13 @@ Route::middleware(['auth','user-access'])->group(function () {
         Route::get('recordlabel/edit/{uuid}', [RecordLabelController::class, 'editProductsRecordLabel']);
         Route::post('recordlabel/edit/{uuid}', [RecordLabelController::class, 'updateProductsRecordLabel']);
         Route::get('recordlabel/delete/{uuid}', [RecordLabelController::class, 'destroyProductsRecordLabel']);
+
+        Route::get('recordstore', [RecordStoreController::class, 'listsProductsRecordStore']);
+        Route::get('recordstore/add', [RecordStoreController::class, 'addProductsRecordStore']);
+        Route::post('recordstore/add', [RecordStoreController::class, 'storeProductsRecordStore']);
+        Route::get('recordstore/edit/{uuid}', [RecordStoreController::class, 'editProductsRecordStore']);
+        Route::post('recordstore/edit/{uuid}', [RecordStoreController::class, 'updateProductsRecordStore']);
+        Route::get('recordstore/delete/{uuid}', [RecordStoreController::class, 'destroyProductsRecordStore']);
 
         Route::get('studiomusic', [StudioMusicController::class, 'listsProductsStudioMusic']);
         Route::get('studiomusic/add', [StudioMusicController::class, 'addProductsStudioMusic']);
