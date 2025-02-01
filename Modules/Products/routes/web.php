@@ -7,6 +7,7 @@ use Modules\Products\Http\Controllers\RecordLabelController;
 use Modules\Products\Http\Controllers\RecordStoreController;
 use Modules\Products\Http\Controllers\StudioMusicController;
 use Modules\Products\Http\Controllers\StudioRecordingController;
+use Modules\Products\Http\Controllers\OutletController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,5 +49,12 @@ Route::middleware(['auth','user-access'])->group(function () {
         Route::get('studiorecording/edit/{uuid}', [StudioRecordingController::class, 'editProductsStudioRecording']);
         Route::post('studiorecording/edit/{uuid}', [StudioRecordingController::class, 'updateProductsStudioRecording']);
         Route::get('studiorecording/delete/{uuid}', [StudioRecordingController::class, 'destroyProductsStudioRecording']);
+
+        Route::get('outlet', [OutletController::class, 'listsProductsOutlet']);
+        Route::get('outlet/add', [OutletController::class, 'addProductsOutlet']);
+        Route::post('outlet/add', [OutletController::class, 'storeProductsOutlet']);
+        Route::get('outlet/edit/{uuid}', [OutletController::class, 'editProductsOutlet']);
+        Route::post('outlet/edit/{uuid}', [OutletController::class, 'updateProductsOutlet']);
+        Route::get('outlet/delete/{uuid}', [OutletController::class, 'destroyProductsOutlet']);
     });
 });
