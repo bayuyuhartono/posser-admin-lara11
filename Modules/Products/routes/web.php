@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use Modules\Products\Http\Controllers\ProductsController;
 use Modules\Products\Http\Controllers\RecordLabelController;
 use Modules\Products\Http\Controllers\StudioMusicController;
+use Modules\Products\Http\Controllers\StudioRecordingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,5 +33,12 @@ Route::middleware(['auth','user-access'])->group(function () {
         Route::get('studiomusic/edit/{uuid}', [StudioMusicController::class, 'editProductsStudioMusic']);
         Route::post('studiomusic/edit/{uuid}', [StudioMusicController::class, 'updateProductsStudioMusic']);
         Route::get('studiomusic/delete/{uuid}', [StudioMusicController::class, 'destroyProductsStudioMusic']);
+
+        Route::get('studiorecording', [StudioRecordingController::class, 'listsProductsStudioRecording']);
+        Route::get('studiorecording/add', [StudioRecordingController::class, 'addProductsStudioRecording']);
+        Route::post('studiorecording/add', [StudioRecordingController::class, 'storeProductsStudioRecording']);
+        Route::get('studiorecording/edit/{uuid}', [StudioRecordingController::class, 'editProductsStudioRecording']);
+        Route::post('studiorecording/edit/{uuid}', [StudioRecordingController::class, 'updateProductsStudioRecording']);
+        Route::get('studiorecording/delete/{uuid}', [StudioRecordingController::class, 'destroyProductsStudioRecording']);
     });
 });

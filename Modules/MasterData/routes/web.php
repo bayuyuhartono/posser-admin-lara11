@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use Modules\MasterData\Http\Controllers\GenreController;
 use Modules\MasterData\Http\Controllers\CountryController;
 use Modules\MasterData\Http\Controllers\CityController;
+use Modules\MasterData\Http\Controllers\MusicFormatController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,5 +40,12 @@ Route::middleware(['auth','user-access'])->group(function () {
         Route::get('city/edit/{uuid}', [CityController::class, 'editMasterCity']);
         Route::post('city/edit/{uuid}', [CityController::class, 'updateMasterCity']);
         Route::get('city/delete/{uuid}', [CityController::class, 'destroyMasterCity']);
+
+        Route::get('musicformat', [MusicFormatController::class, 'listsMasterMusicFormat']);
+        Route::get('musicformat/add', [MusicFormatController::class, 'addMasterMusicFormat']);
+        Route::post('musicformat/add', [MusicFormatController::class, 'storeMasterMusicFormat']);
+        Route::get('musicformat/edit/{uuid}', [MusicFormatController::class, 'editMasterMusicFormat']);
+        Route::post('musicformat/edit/{uuid}', [MusicFormatController::class, 'updateMasterMusicFormat']);
+        Route::get('musicformat/delete/{uuid}', [MusicFormatController::class, 'destroyMasterMusicFormat']);
     });
 });
